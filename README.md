@@ -1,6 +1,8 @@
 Automation tests for QualityMap
+
 🚀 Features
 Framework and plugins
+
 ✔️ Cypress: Used to create and run end-to-end (E2E) and API test automation.
 ✔️ Faker: Generates random names, emails, etc...
 ✔️ Mochawesome: Generates a dashboard report of our tests.
