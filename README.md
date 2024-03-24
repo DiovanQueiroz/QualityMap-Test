@@ -83,6 +83,5 @@ This will open the Cypress test runner in your browser.
 
 ### 💬 Author's Comments
 
-* This project uses a GitHub Actions pipeline to run the tests. The pipeline is triggered on every commit and can be viewed here: https://github.
-com/DiovanQueiroz/QualityMap-Test/actions
+* This project uses a GitHub Actions pipeline to run the tests. The pipeline is triggered on every commit and can be viewed here: https://github.com/DiovanQueiroz/QualityMap-Test/actions
 * The last test of the front-end automation will likely fail at the first try because the server cleans up the database.
