@@ -1,4 +1,5 @@
 import moment from "moment";
+import { faker } from "@faker-js/faker/locale/pt_BR";
 import { registrationElements } from "../e2e/elements/registrationElements";
 
 Cypress.Commands.add("createAccount", (accountInformation) => {
@@ -18,9 +19,14 @@ Cypress.Commands.add("createAccount", (accountInformation) => {
     }
 
     if(accountInformation.birthDate){
-  cy.get(registrationElements.dateOfBirthDay).select(`${accountInformation.birthDate[0]}`).should("contain", `${accountInformation.birthDate[0]}`);
-  cy.get(registrationElements.dateOfBirthMonth).select(`${accountInformation.birthDate[1]}`).should( "contain",moment().month(accountInformation.birthDate[1] - 1).format("MMMM"));
-  cy.get(registrationElements.dateOfBirthYear).select(`${accountInformation.birthDate[2]}`).should("contain", `${accountInformation.birthDate[2]}`);
+  cy.get(registrationElements.dateOfBirthDay).select(`${accountInformation.birthDate[0]}`)
+  cy.get(registrationElements.dateOfBirthDay).should("contain", `${accountInformation.birthDate[0]}`);
+
+  cy.get(registrationElements.dateOfBirthMonth).select(`${accountInformation.birthDate[1]}`)
+  cy.get(registrationElements.dateOfBirthMonth).should( "contain",moment().month(accountInformation.birthDate[1] - 1).format("MMMM"));
+
+  cy.get(registrationElements.dateOfBirthYear).select(`${accountInformation.birthDate[2]}`)
+  cy.get(registrationElements.dateOfBirthYear).should("contain", `${accountInformation.birthDate[2]}`);
     }
 
     if(accountInformation.companyName)
@@ -32,3 +38,44 @@ Cypress.Commands.add("createAccount", (accountInformation) => {
 
   cy.get(registrationElements.registerSubmitButton).click();
 });
+
+
+Cypress.Commands.add('apiCreateUser',()=>{
+  cy.api({
+    url: "https://serverest.dev/usuarios",
+    method: "POST",
+    body: {
+        "nome": faker.person.fullName(),
+        "email": faker.internet.email(),
+        "password": "teste",
+        "administrador": "true"
+    },
+    failOnStatusCode: false,
+  })
+  .then((response) => {
+    expect(response.status).to.be.eq(201)
+    expect(response.body).to.have.property(
+      "message",
+      "Cadastro realizado com sucesso"
+    );
+  });
+})
+
+Cypress.Commands.add('createMassTest',()=>{
+  cy.apiCreateUser().then((response)=>{
+    cy.api({
+        url: "https://serverest.dev/usuarios/" + response.body._id,
+        method: "GET",
+        failOnStatusCode: false,
+      }).then((responsetwo)=>{
+        expect(responsetwo.status).to.be.eq(200)
+        cy.writeFile("cypress/fixtures/testUser.json", responsetwo.body)
+      })
+})
+ 
+})
+
+
+
+
+

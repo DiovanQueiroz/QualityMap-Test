@@ -16,6 +16,9 @@
 // Import commands.js using ES2015 syntax:
 import 'cypress-plugin-api'
 import './commands'
+before(()=>{
+    cy.createMassTest()
+})
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
