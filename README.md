@@ -1,24 +1,24 @@
-Automation tests for QualityMap
+#Automation tests for QualityMap
 
-🚀 Features
-Framework and plugins
+##🚀 Features 
+###Framework and plugins
 
-✔️ Cypress: Used to create and run end-to-end (E2E) and API test automation.
+*✔️ Cypress: Used to create and run end-to-end (E2E) and API test automation.
 
-✔️ Faker: Generates random names, emails, etc...
+*✔️ Faker: Generates random names, emails, etc...
 
-✔️ Mochawesome: Generates a dashboard report of our tests.
+*✔️ Mochawesome: Generates a dashboard report of our tests.
 
-✔️ Cypress-plugin-api: Displays a API  response and request on frontend execution
+*✔️ Cypress-plugin-api: Displays a API  response and request on frontend execution
 
-✔️ moment: Validatse our conversion of number to month.
+*✔️ moment: Validatse our conversion of number to month.
 
-Code quality
+###Code quality
 
-✔️ ESLint: To avoid errors in the code pattern and ensure good quality of the same.
+*✔️ ESLint: To avoid errors in the code pattern and ensure good quality of the same.
 
-CI/CD
-✔️ GitHub Actions: To trigger a pipeline on every push, this pipeline executes automated tests with Cypress and also ESlint to ensure working tests and quality code.
+###CI/CD
+*✔️ GitHub Actions: To trigger a pipeline on every push, this pipeline executes automated tests with Cypress and also ESlint to ensure working tests and quality code.
 
 
 💻 Prerequisites to run the project on your machine
